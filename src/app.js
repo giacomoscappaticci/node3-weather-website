@@ -1,11 +1,16 @@
 const path = require('path')
 //Inizializzazione di Express
 const express = require('express')
-const app = express()
 //Engine View per utilizzo di partial per l'html, le pagine hbs sono file html ma con estenzione hbs
 const hbs = require('hbs') 
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+
+const app = express()
+// process.env = per accedere alle variabili d'ambiente (PORT = porta d'ascolto)
+// l'istruzione dice che se non la trova (poichè è settata solo da Heroku), allora usa la 3000 (vuol
+// dire che siamo in locale)
+const port = process.env.PORT || 3000 
 
 //Definizione paths per configurazione Express
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -105,8 +110,8 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
 })
 
 // chiamata alla route principale e alle altre ruote, sostituite da app.use e opportuni file html
