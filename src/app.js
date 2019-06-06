@@ -10,7 +10,7 @@ const app = express()
 // process.env = per accedere alle variabili d'ambiente (PORT = porta d'ascolto)
 // l'istruzione dice che se non la trova (poichè è settata solo da Heroku), allora usa la 3000 (vuol
 // dire che siamo in locale)
-const port = process.env.PORT || 3000 
+const port = process.env.PORT || 3005 
 
 //Definizione paths per configurazione Express
 const publicDirectoryPath = path.join(__dirname, '../public')
